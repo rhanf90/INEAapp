@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">(INEA)BITACORA MOBIL</string>
+    <string name="hello_world">INICIAR SESIÓN</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_bienvenido">bienvenido</string>
+    <string name="inicio">BITACORA MOVIL</string>
+
+    <string name="Bienvenido">REGISTRO DE ACTIVIDADES DEL EDUCANDO</string>
+
+    <string name="id_usuario">ID del Usuario:</string>
+    <string name="user">NOMBRE:</string>
+    <string name="password">APELLIDOS:</string>
+    <string name="nombre">ACTIVIDAD A REALIZAR:</string>
+    <string name="apellidop">NIVEL EDUCATIVO:</string>
+    <string name="apellidom">MODULO:</string>
+
+    <string name="alta">Alta</string>
+    <string name="baja">Baja</string>
+    <string name="consulta">Consultar</string>
+    <string name="modificar">Modificar</string>
+    <string name="limpiar">Limpiar</string>
+
+</resources>

@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp"
     android:paddingTop="16dp"
-    android:paddingBottom="16dp"
+    android:paddingBottom="15dp"
+    android:background="#fff99222"
     tools:context="com.app.rhanfe006.ineaapp.bienvenido"
-    android:background="#FFC400"
     >
 
     <LinearLayout
@@ -16,20 +16,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-        <TextView
-            android:id="@+id/textViewinicio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/inicio" />
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
-            android:text="@string/Bienvenido" />
+            android:textStyle="bold"
+            android:text="@string/Bienvenido"
+            android:textSize="14sp"
+            />
 
 
         <TextView
@@ -37,93 +33,184 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="" />
-
-
+            android:text=""
+            android:layout_margin="10dp"/>
 
         <TextView
             android:text="@string/id_usuario"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/et_idusuario"
             android:inputType="phone"
-            android:digits="1234567890"/>
+            android:digits="1234567890"
+            android:cursorVisible="true"
+            />
 
         <TextView
             android:text="@string/user"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/et_user" />
+            android:id="@+id/et_nombres"
+            />
 
         <TextView
             android:text="@string/password"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/et_password"/>
-        //android:inputType="textPassword" />
+            android:id="@+id/et_apellidos"
+            />
 
         <TextView
             android:text="@string/nombre"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
 
         <EditText
             android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:id="@+id/et_actividades"
+            android:visibility="invisible"
+            />
+        <CheckBox
+            android:text="@string/estudiar"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/et_nombre" />
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:id="@+id/rdestudiar"
+            android:onClick="estudiar"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-        <TextView
+        <CheckBox
+            android:text="@string/aplicarexamen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:id="@+id/rdaplicarexamen"
+            android:onClick="aplicarexamen"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="69dp"
+            android:layout_marginEnd="69dp" />
+
+        <CheckBox
+            android:text="@string/consultapersonal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:id="@+id/rdconsultapersonal"
+            android:onClick="consultapersonal"
+            android:layout_weight="0.16" />
+
+     <TextView
             android:text="@string/apellidop"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
 
         <EditText
             android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:id="@+id/et_nivel"
+            android:visibility="invisible"
+
+            />
+        <CheckBox
+            android:text="@string/inicial"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/et_apellidop" />
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:id="@+id/rdinicial"
+            android:onClick="inicial"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:text="@string/intermedio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:id="@+id/rdintermedio"
+            android:onClick="intermedio"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="69dp"
+            android:layout_marginEnd="69dp" />
+
+        <CheckBox
+            android:text="@string/avanzado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:id="@+id/rdavanzado"
+            android:onClick="avanzado"
+            android:layout_weight="0.16" />
+
 
         <TextView
             android:text="@string/apellidom"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/et_apellidom" />
+            android:id="@+id/et_modulo"
+           />
+        <TextView
+            android:text="@string/fecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_fecha"
+            />
+
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
             <Button
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/alta"
+                android:textSize="14sp"
                 android:id="@+id/btn_alta"
                 android:onClick="alta"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/consulta"
-                android:id="@+id/btn_consultar"
-                android:onClick="consulta"
-                android:layout_weight="1" />
+                android:layout_weight="1"/>
 
         </LinearLayout>
 
@@ -132,13 +219,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/consulta"
+                android:id="@+id/btn_consultar"
+                android:onClick="consulta"
+                android:layout_weight="1"
+                android:textSize="14sp"/>
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/baja"
                 android:id="@+id/btn_baja"
                 android:onClick="baja"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="14sp"/>
 
             <Button
                 android:layout_width="0dp"
@@ -146,7 +243,8 @@
                 android:text="@string/modificar"
                 android:id="@+id/btn_modificar"
                 android:onClick="modificacion"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="14sp"/>
 
         </LinearLayout>
 
@@ -161,7 +259,16 @@
                 android:text="@string/limpiar"
                 android:id="@+id/btn_limpiar"
                 android:onClick="limpia"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="14sp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ver"
+                android:id="@+id/btn_ver"
+                android:onClick="ver"
+                android:layout_weight="1"
+                android:textSize="14sp"/>
 
         </LinearLayout>
 

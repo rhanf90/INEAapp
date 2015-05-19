@@ -12,7 +12,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table usuarios (id_usuario integer primary key unique, user text unique, password text, nombre text, apellido_p text, apellido_m text) ");
+        db.execSQL("create table usuarios (id_usuario integer primary key unique, user text unique, password text, nombre text, apellido_p text, apellido_m text, modulo text) ");
 
 
 
@@ -21,7 +21,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists usuarios");
-        db.execSQL("create table usuarios (id_usuario integer primary key unique, user text unique, password text, nombre text, apellido_p text, apellido_m text) ");
+        db.execSQL("create table usuarios (id_usuario integer primary key unique, user text unique, password text, nombre text, apellido_p text, apellido_m text, modulo text) ");
 
 
 

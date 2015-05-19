@@ -3,6 +3,7 @@ package com.app.rhanfe006.ineaapp;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,9 +19,12 @@ import android.widget.Toast;
 
 public class bienvenido extends Activity implements View.OnClickListener {
 
-    EditText et_idusuario, et_user, et_password, et_nombre, et_apellidop, et_apellidom, et_email;
+    EditText et_idusuario, et_nombres, et_apellidos, et_actividades, et_nivel, et_modulo, et_fecha;
 
     TextView nombre;
+    String actividadM, nivelE;
+    CheckBox inicial, intermedio, avanzado;
+    CheckBox estudiar, aplicarexamen, consultapersonal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +36,20 @@ public class bienvenido extends Activity implements View.OnClickListener {
         nombre.setText(bolsa.getString("NOMBRE"));
 
         et_idusuario = (EditText) findViewById(R.id.et_idusuario);
-        et_user = (EditText) findViewById(R.id.et_user);
-        et_password = (EditText) findViewById(R.id.et_password);
-        et_nombre = (EditText) findViewById(R.id.et_nombre);
-        et_apellidop = (EditText) findViewById(R.id.et_apellidop);
-        et_apellidom = (EditText) findViewById(R.id.et_apellidom);
+        et_nombres = (EditText) findViewById(R.id.et_nombres);
+        et_apellidos = (EditText) findViewById(R.id.et_apellidos);
+        et_actividades = (EditText) findViewById(R.id.et_actividades);
+        et_nivel = (EditText) findViewById(R.id.et_nivel);
+        et_modulo = (EditText) findViewById(R.id.et_modulo);
+        et_fecha = (EditText) findViewById(R.id.et_fecha);
+
+        inicial= (CheckBox) findViewById(R.id.rdinicial);
+        intermedio= (CheckBox) findViewById(R.id.rdintermedio);
+        avanzado= (CheckBox) findViewById(R.id.rdavanzado);
+        estudiar = (CheckBox) findViewById(R.id.rdestudiar);
+        aplicarexamen = (CheckBox) findViewById(R.id.rdaplicarexamen);
+        consultapersonal = (CheckBox) findViewById(R.id.rdconsultapersonal);
+
 
     }
     public void alta (View v) {
@@ -44,30 +58,60 @@ public class bienvenido extends Activity implements View.OnClickListener {
         SQLiteDatabase bd = admin.getWritableDatabase();
 
         String idusuario = et_idusuario.getText().toString();
-        String user = et_user.getText().toString();
-        String password = et_password.getText().toString();
-        String nombre = et_nombre.getText().toString();
-        String apellidop = et_apellidop.getText().toString();
-        String apellidom = et_apellidom.getText().toString();
+        String user = et_nombres.getText().toString();
+        String password = et_apellidos.getText().toString();
+        String nombre = et_actividades.getText().toString();
+        String nivelE = et_nivel.getText().toString();
+        String apellidom = et_modulo.getText().toString();
+        String fecha = et_fecha.getText().toString();
+
+
+        if (inicial.isChecked() == true) {
+            nivelE = "Inicial";
+        }
+        else if (intermedio.isChecked() == true) {
+            nivelE = "Intermedio";
+        }
+        else if (avanzado.isChecked() == true) {
+            nivelE = "Avanzado";
+        }
+
+        if (estudiar.isChecked() == true) {
+            actividadM = "Estudiar";
+        }
+        else if (aplicarexamen.isChecked() == true) {
+            actividadM = "Aplicar Examen";
+        }
+        else if (consultapersonal.isChecked() == true) {
+            actividadM = "Consulta Personal";
+        }
 
 
         ContentValues registro = new ContentValues();
         registro.put("id_usuario", idusuario);
         registro.put("user", user);
         registro.put("password", password);
-        registro.put("nombre", nombre);
-        registro.put("apellido_p", apellidop);
+        registro.put("nombre", actividadM);
+        registro.put("apellido_p", nivelE);
         registro.put("apellido_m", apellidom);
+        registro.put("modulo",fecha);
 
 
         bd.insert("usuarios", null, registro);
         bd.close();
         et_idusuario.setText("");
-        et_user.setText("");
-        et_password.setText("");
-        et_nombre.setText("");
-        et_apellidop.setText("");
-        et_apellidom.setText("");
+        et_nombres.setText("");
+        et_apellidos.setText("");
+        et_actividades.setText("");
+        et_nivel.setText("");
+        et_modulo.setText("");
+        et_fecha.setText("");
+        inicial.setChecked(false);
+        intermedio.setChecked(false);
+        avanzado.setChecked(false);
+        estudiar.setChecked(false);
+        aplicarexamen.setChecked(false);
+        consultapersonal.setChecked(false);
 
 
         Toast.makeText(this, "Actividad de Educando Registrada", Toast.LENGTH_SHORT).show();
@@ -77,13 +121,36 @@ public class bienvenido extends Activity implements View.OnClickListener {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "usuarios", null, 1); SQLiteDatabase bd = admin.getWritableDatabase();
         String idusuario = et_idusuario.getText().toString();
         // muestra el registro guardado
-        Cursor fila = bd.rawQuery("select user, password, nombre, apellido_p, apellido_m from usuarios where id_usuario=" + idusuario, null);
+        Cursor fila = bd.rawQuery("select user, password, nombre, apellido_p, apellido_m, modulo from usuarios where id_usuario=" + idusuario, null);
         if (fila.moveToFirst()) {
-            et_user.setText(fila.getString(0));
-            et_password.setText(fila.getString(1));
-            et_nombre.setText(fila.getString(2));
-            et_apellidop.setText(fila.getString(3));
-            et_apellidom.setText(fila.getString(4));
+            et_nombres.setText(fila.getString(0));
+            et_apellidos.setText(fila.getString(1));
+            et_actividades.setText(fila.getString(2));
+            et_nivel.setText(fila.getString(3));
+            et_modulo.setText(fila.getString(4));
+            et_fecha.setText(fila.getString(5));
+
+
+            if (et_actividades.getText().toString().equals("Estudiar")) {
+                estudiar.setChecked(true);
+
+            } else if (et_actividades.getText().toString().equals("Aplicar Examen")) {
+                aplicarexamen.setChecked(true);
+
+            } else if (et_actividades.getText().toString().equals("Consulat Personal")) {
+                consultapersonal.setChecked(true);
+            }
+
+            if (et_nivel.getText().toString().equals("Inicial")) {
+                inicial.setChecked(true);
+
+            } else if (et_nivel.getText().toString().equals("Intermedio")) {
+                intermedio.setChecked(true);
+            } else if (et_nivel.getText().toString().equals("Avanzado")) {
+                avanzado.setChecked(true);
+            } else {
+                Toast.makeText(this, "No Existe El Registro", Toast.LENGTH_SHORT).show();
+            }
 
         } else {
             Toast.makeText(this,"No hay registro del Educando",Toast.LENGTH_SHORT).show();
@@ -99,11 +166,11 @@ public class bienvenido extends Activity implements View.OnClickListener {
         bd.close();
 
         et_idusuario.setText("");
-        et_user.setText("");
-        et_password.setText("");
-        et_nombre.setText("");
-        et_apellidop.setText("");
-        et_apellidom.setText("");
+        et_nombres.setText("");
+        et_apellidos.setText("");
+        et_actividades.setText("");
+        et_nivel.setText("");
+        et_modulo.setText("");
 
         if (cant == 1) {
             Toast.makeText(this, "Registro Eliminado", Toast.LENGTH_SHORT).show();
@@ -117,11 +184,32 @@ public class bienvenido extends Activity implements View.OnClickListener {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "usuarios", null, 1); SQLiteDatabase bd = admin.getWritableDatabase();
 
         String idusuario = et_idusuario.getText().toString();
-        String user = et_user.getText().toString();
-        String password = et_password.getText().toString();
-        String nombre = et_nombre.getText().toString();
-        String apellidop = et_apellidop.getText().toString();
-        String apellidom = et_apellidom.getText().toString();
+        String user = et_nombres.getText().toString();
+        String password = et_apellidos.getText().toString();
+        String actividadM = et_actividades.getText().toString();
+        String nivelE = et_nivel.getText().toString();
+        String apellidom = et_modulo.getText().toString();
+        String fecha = et_fecha.getText().toString();
+
+        if (inicial.isChecked() == true) {
+            nivelE = "Inicial";
+        }
+        else if (intermedio.isChecked() == true) {
+            nivelE = "Intermedio";
+        }
+        else if (avanzado.isChecked() == true) {
+            nivelE = "Avanzado";
+        }
+
+        if (estudiar.isChecked() == true) {
+            actividadM = "Estudiar";
+        }
+        else if (aplicarexamen.isChecked() == true) {
+            actividadM = "Aplicar Examen";
+        }
+        else if (consultapersonal.isChecked() == true) {
+            actividadM = "Consulta Personal";
+        }
 
 
         ContentValues registro = new ContentValues();
@@ -129,9 +217,10 @@ public class bienvenido extends Activity implements View.OnClickListener {
         registro.put("id_usuario", idusuario);
         registro.put("user", user);
         registro.put("password", password);
-        registro.put("nombre", nombre);
-        registro.put("apellido_p", apellidop);
+        registro.put("nombre", actividadM);
+        registro.put("apellido_p", nivelE);
         registro.put("apellido_m", apellidom);
+        registro.put("modulo", fecha);
 
 // nombre de la tabla(usuarios) y la condicion(id_usuario)
         int cant = bd.update("usuarios", registro, "id_usuario=" + idusuario, null);
@@ -147,13 +236,62 @@ public class bienvenido extends Activity implements View.OnClickListener {
 
     public void limpia (View v) {
         et_idusuario.setText("");
-        et_user.setText("");
-        et_password.setText("");
-        et_nombre.setText("");
-        et_apellidop.setText("");
-        et_apellidom.setText("");
+        et_nombres.setText("");
+        et_apellidos.setText("");
+        et_actividades.setText("");
+        et_nivel.setText("");
+        et_modulo.setText("");
+        et_fecha.setText("");
+        inicial.setChecked(false);
+        intermedio.setChecked(false);
+        avanzado.setChecked(false);
+        estudiar.setChecked(false);
+        aplicarexamen.setChecked(false);
+        consultapersonal.setChecked(false);
 
+    }
+    public void  ver(View v) {
+        Intent intent = new Intent(this, registros.class);
+        startActivity(intent);
+    }
+    public void inicial (View v){
+        inicial.setChecked(true);
+        intermedio.setChecked(false);
+        avanzado.setChecked(false);
 
+    }
+    public void intermedio (View v){
+
+        inicial.setChecked(false);
+        intermedio.setChecked(true);
+        avanzado.setChecked(false);
+
+    }
+    public void avanzado (View v){
+
+        inicial.setChecked(false);
+        intermedio.setChecked(false);
+        avanzado.setChecked(true);
+    }
+
+    public void estudiar (View v){
+        estudiar.setChecked(true);
+        aplicarexamen.setChecked(false);
+        consultapersonal.setChecked(false);
+
+    }
+    public void aplicarexamen (View v){
+
+        estudiar.setChecked(false);
+        aplicarexamen.setChecked(true);
+        consultapersonal.setChecked(false);
+
+    }
+    public void consultapersonal (View v){
+
+        estudiar.setChecked(false);
+        aplicarexamen.setChecked(false);
+        consultapersonal.setChecked(true);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="1dp"
+    card_view:cardCornerRadius="10dp">
+
+
+            <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CLAVE DE REGISTRO:"
+                    android:id="@+id/textView4"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ID"
+                    android:id="@+id/id_persona"
+                    android:textColor="#ff000000"
+                    android:textSize="13sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_alignBaseline="@+id/textView4"
+                    android:layout_alignBottom="@+id/textView4"
+                    android:layout_toRightOf="@+id/textView4" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NOMBRE"
+                    android:id="@+id/nommbre_c"
+                    android:textColor="#ff000000"
+                    android:textSize="13sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_below="@+id/textView4"
+                    android:layout_toRightOf="@+id/textView6"
+                    android:layout_toEndOf="@+id/textView6" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NOMBRE:  "
+                    android:id="@+id/textView6"
+                    android:layout_alignBaseline="@+id/nommbre_c"
+                    android:layout_alignBottom="@+id/nommbre_c"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="APELLIDOS:  "
+                    android:id="@+id/textView"
+                    android:layout_below="@+id/textView6"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="APELLIDOS"
+                    android:id="@+id/apellidos_c"
+                    android:textColor="#ff000000"
+                    android:textSize="13sp"
+                    android:layout_alignBottom="@+id/textView"
+                    android:layout_toRightOf="@+id/textView"
+                    android:layout_toEndOf="@+id/textView" />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ACTIVIDAD A REALIZAR:  "
+                    android:id="@+id/textView2"
+                    android:layout_below="@+id/textView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TIPO"
+                    android:id="@+id/tipo_c"
+                    android:textColor="#ff000000"
+                    android:textSize="13sp"
+                    android:layout_alignBaseline="@+id/textView2"
+                    android:layout_alignBottom="@+id/textView2"
+                    android:layout_toRightOf="@+id/textView2"
+                    android:layout_toEndOf="@+id/textView2" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NIVEL EDUCATIVO:  "
+                    android:id="@+id/textView3"
+                    android:layout_below="@+id/textView2"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NIVEL"
+                    android:id="@+id/nivel_c"
+                    android:textColor="#ff000000"
+                    android:textSize="13sp"
+                    android:layout_weight="1"
+                    android:layout_gravity="left"
+                    android:layout_alignBaseline="@+id/textView3"
+                    android:layout_alignBottom="@+id/textView3"
+                    android:layout_toRightOf="@+id/textView3"
+                    android:layout_toEndOf="@+id/textView3" />
+
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MODULO:   "
+                    android:id="@+id/textView5"
+                    android:layout_below="@+id/textView3"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="MODULO"
+                    android:id="@+id/modulo_c"
+                    android:textColor="#ff000000"
+                    android:textSize="13sp"
+                    android:layout_alignBottom="@+id/textView5"
+                    android:layout_alignLeft="@+id/nommbre_c"
+                    android:layout_alignStart="@+id/nommbre_c" />
+
+                <TextView
+
+                    android:id="@+id/fecha1_c"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="FECHA: "
+                    android:layout_marginTop="108dp"/>
+
+
+            </RelativeLayout>
+
+
+
+</android.support.v7.widget.CardView>
